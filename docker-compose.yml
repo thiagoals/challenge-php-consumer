@@ -1,15 +1,15 @@
 version: "3.3"
 
 services:
-  db:
-    container_name: mysql-consumer
-    image: mysql:5.7
-    restart: always
-    ports:
-      - "3307:3306"
-    environment:
-      MYSQL_ROOT_PASSWORD: challenge-root
-      MYSQL_DATABASE: challenge-php
+#  db:
+#    container_name: mysql-consumer
+#    image: mysql:5.7
+#    restart: always
+#    ports:
+#      - "3309:3309"
+#    environment:
+#      MYSQL_ROOT_PASSWORD: challenge-root
+#      MYSQL_DATABASE: challenge-php
 
   nginx:
     container_name: nginx-consumer
@@ -18,9 +18,9 @@ services:
     links:
       - php
     ports:
-      - "8084:80"
-    depends_on:
-      - db
+      - "8081:80"
+#    depends_on:
+#      - db
   
   php:
     container_name: php-consumer
@@ -29,20 +29,20 @@ services:
       - ./lumen:/var/www/html
     working_dir: /var/www/html/app/public
     command: php-fpm
-    links:
-      - db:db
+#    links:
+#      - db:db
     ports:
       - "9001:9000"
-    depends_on:
-      - db
+#    depends_on:
+#      - db
 
-  phpmyadmin:
-    depends_on:
-      - db
-    image: phpmyadmin/phpmyadmin
-    restart: always
-    ports:
-      - "8085:80"
-    environment:
-      PMA_HOST: db
-      MYSQL_ROOT_PASSWORD: challenge-root
+#  phpmyadmin:
+#    depends_on:
+#      - db
+#    image: phpmyadmin/phpmyadmin
+#    restart: always
+#    ports:
+#      - "8085:80"
+#    environment:
+#      PMA_HOST: db
+#      MYSQL_ROOT_PASSWORD: challenge-root
