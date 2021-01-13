@@ -28,9 +28,3 @@ Dentro do container, já na pasta /var/www/html/, você pode rodar o seguinte co
 php artisan rabbitmq:consume
 ```
 Esse comando irá ouvir a fila do RabbitMQ ou CloudAMQP que você inserir. Lembrando que os dados da conexão com a fila estão no arquivo .env
-
-# Swagger
-Esse projeto possui uma documentação básica de swagger. Caso você queira criar mais anotações de documentação do projeto, importante utilizar o comando do artisan na pasta /var/www/html/:
-```
-php artisan swagger-lume:generate
-```
